@@ -11,10 +11,7 @@
       "direction": "ltr",
       "htmlLang": "en",
       "calendar": "gregory",
-      "path": "en",
-      "translate": true,
-      "url": "https://physicalai-book.com",
-      "baseUrl": "/"
+      "path": "en"
     }
   }
 }

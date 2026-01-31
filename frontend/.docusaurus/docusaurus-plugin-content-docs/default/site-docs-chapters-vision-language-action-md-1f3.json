@@ -1,4 +1,5 @@
 {
+  "unversionedId": "chapters/vision-language-action",
   "id": "chapters/vision-language-action",
   "title": "Vision Language Action",
   "description": "Overview",
@@ -7,7 +8,6 @@
   "slug": "/chapters/vision-language-action",
   "permalink": "/docs/chapters/vision-language-action",
   "draft": false,
-  "unlisted": false,
   "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapters/vision-language-action.md",
   "tags": [],
   "version": "current",

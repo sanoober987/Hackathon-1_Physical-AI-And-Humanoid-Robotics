@@ -1,4 +1,5 @@
 {
+  "unversionedId": "chapters/ros2-nervous-system",
   "id": "chapters/ros2-nervous-system",
   "title": "ROS2 Nervous System",
   "description": "Overview",
@@ -7,7 +8,6 @@
   "slug": "/chapters/ros2-nervous-system",
   "permalink": "/docs/chapters/ros2-nervous-system",
   "draft": false,
-  "unlisted": false,
   "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapters/ros2-nervous-system.md",
   "tags": [],
   "version": "current",

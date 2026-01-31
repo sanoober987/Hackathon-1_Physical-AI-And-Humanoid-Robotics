@@ -7,28 +7,12 @@ export default {
   "title": "Physical AI & Humanoid Robotics",
   "tagline": "A Comprehensive Textbook on Physical AI and Humanoid Robotics",
   "favicon": "img/favicon.ico",
-  "url": "https://physicalai-book.com",
+  "url": "https://hackathon-1-physical-ai-humanoid-robotics-textbook-a18m.vercel.app",
   "baseUrl": "/",
+  "trailingSlash": false,
   "organizationName": "physicalai-book",
   "projectName": "physicalai-book",
   "onBrokenLinks": "warn",
-  "markdown": {
-    "format": "detect",
-    "mermaid": false,
-    "mdx1Compat": {
-      "comments": true,
-      "admonitions": true,
-      "headingIds": true
-    },
-    "emoji": true,
-    "anchors": {
-      "maintainCase": false
-    },
-    "hooks": {
-      "onBrokenMarkdownLinks": "warn",
-      "onBrokenMarkdownImages": "throw"
-    }
-  },
   "i18n": {
     "defaultLocale": "en",
     "locales": [
@@ -55,17 +39,6 @@ export default {
         "theme": {
           "customCss": "D:\\Hackathon-1\\PhysicalAI_Book\\frontend\\src\\css\\custom.css"
         }
-      }
-    ]
-  ],
-  "plugins": [
-    [
-      "D:\\Hackathon-1\\PhysicalAI_Book\\frontend\\node_modules\\@docusaurus\\plugin-client-redirects\\lib\\index.js",
-      {
-        "fromExtensions": [
-          "html"
-        ],
-        "redirects": []
       }
     ]
   ],
@@ -367,11 +340,6 @@ export default {
         "autoCollapseCategories": false
       }
     },
-    "blog": {
-      "sidebar": {
-        "groupByYear": true
-      }
-    },
     "metadata": [],
     "tableOfContents": {
       "minHeadingLevel": 2,
@@ -379,38 +347,21 @@ export default {
     }
   },
   "baseUrlIssueBanner": true,
-  "future": {
-    "v4": {
-      "removeLegacyPostBuildHeadAttribute": false,
-      "useCssCascadeLayers": false
-    },
-    "experimental_faster": {
-      "swcJsLoader": false,
-      "swcJsMinimizer": false,
-      "swcHtmlMinimizer": false,
-      "lightningCssMinimizer": false,
-      "mdxCrossCompilerCache": false,
-      "rspackBundler": false,
-      "rspackPersistentCache": false,
-      "ssgWorkerThreads": false
-    },
-    "experimental_storage": {
-      "type": "localStorage",
-      "namespace": false
-    },
-    "experimental_router": "browser"
-  },
-  "onBrokenAnchors": "warn",
+  "onBrokenMarkdownLinks": "warn",
   "onDuplicateRoutes": "warn",
   "staticDirectories": [
     "static"
   ],
   "customFields": {},
+  "plugins": [],
   "themes": [],
   "scripts": [],
   "headTags": [],
   "stylesheets": [],
   "clientModules": [],
   "titleDelimiter": "|",
-  "noIndex": false
+  "noIndex": false,
+  "markdown": {
+    "mermaid": false
+  }
 };

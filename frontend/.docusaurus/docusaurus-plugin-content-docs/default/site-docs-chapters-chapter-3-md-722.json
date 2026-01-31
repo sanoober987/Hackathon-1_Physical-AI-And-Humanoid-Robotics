@@ -1,4 +1,5 @@
 {
+  "unversionedId": "chapters/chapter3",
   "id": "chapters/chapter3",
   "title": "Chapter 3: Control Systems for Humanoid Robots",
   "description": "Introduction",
@@ -7,7 +8,6 @@
   "slug": "/chapters/chapter3",
   "permalink": "/docs/chapters/chapter3",
   "draft": false,
-  "unlisted": false,
   "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapters/chapter3.md",
   "tags": [],
   "version": "current",
