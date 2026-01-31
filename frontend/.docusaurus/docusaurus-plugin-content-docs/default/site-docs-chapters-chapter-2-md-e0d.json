@@ -1,0 +1,18 @@
+{
+  "id": "chapters/chapter2",
+  "title": "Chapter 2: Kinematics and Dynamics of Humanoid Systems",
+  "description": "Introduction",
+  "source": "@site/docs/chapters/chapter2.md",
+  "sourceDirName": "chapters",
+  "slug": "/chapters/chapter2",
+  "permalink": "/docs/chapters/chapter2",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapters/chapter2.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  }
+}

@@ -1,0 +1,83 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+.venv/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+build/
+dist/
+*.egg-info/
+.coverage
+coverage.xml
+*.coveragerc
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment variables
+.env
+
+# Local configuration
+local.properties
+config/local.json
+
+# Ignore claude and specify directories (as specified in requirements)
+.claude/
+.specify/
+
+# Ignore history and specs as they should be imported separately
+history/
+specs/
+
+# Database
+*.db
+*.db-journal
+
+# Backend specific
+/backend/__pycache__/
+/backend/*.pyc
+/backend/env/
+/backend/.env
+/backend/.venv/
+
+# Frontend specific
+/frontend/build/
+/frontend/node_modules/
+/frontend/.env
+/frontend/.next/
+/frontend/out/

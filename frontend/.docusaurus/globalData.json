@@ -1,0 +1,84 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "index",
+          "docs": [
+            {
+              "id": "chapters/capstone-project",
+              "path": "/docs/chapters/capstone-project",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapters/chapter1",
+              "path": "/docs/chapters/chapter1"
+            },
+            {
+              "id": "chapters/chapter2",
+              "path": "/docs/chapters/chapter2"
+            },
+            {
+              "id": "chapters/chapter3",
+              "path": "/docs/chapters/chapter3"
+            },
+            {
+              "id": "chapters/gazebo-digital-twin",
+              "path": "/docs/chapters/gazebo-digital-twin",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapters/humanoid-robotics",
+              "path": "/docs/chapters/humanoid-robotics",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapters/introduction-to-physical-ai",
+              "path": "/docs/chapters/introduction-to-physical-ai",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapters/nvidia-isaac-brain",
+              "path": "/docs/chapters/nvidia-isaac-brain",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapters/ros2-nervous-system",
+              "path": "/docs/chapters/ros2-nervous-system",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "chapters/vision-language-action",
+              "path": "/docs/chapters/vision-language-action",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "index",
+              "path": "/docs/"
+            },
+            {
+              "id": "intro",
+              "path": "/docs/intro",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/intro",
+                "label": "intro"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

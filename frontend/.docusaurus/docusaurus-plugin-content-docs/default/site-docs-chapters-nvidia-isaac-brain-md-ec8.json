@@ -1,0 +1,28 @@
+{
+  "id": "chapters/nvidia-isaac-brain",
+  "title": "NVIDIA Isaac Brain",
+  "description": "Overview",
+  "source": "@site/docs/chapters/nvidia-isaac-brain.md",
+  "sourceDirName": "chapters",
+  "slug": "/chapters/nvidia-isaac-brain",
+  "permalink": "/docs/chapters/nvidia-isaac-brain",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapters/nvidia-isaac-brain.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_label": "NVIDIA Isaac Brain",
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Gazebo Digital Twin",
+    "permalink": "/docs/chapters/gazebo-digital-twin"
+  },
+  "next": {
+    "title": "Vision Language Action",
+    "permalink": "/docs/chapters/vision-language-action"
+  }
+}

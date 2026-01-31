@@ -1,0 +1,28 @@
+{
+  "id": "chapters/gazebo-digital-twin",
+  "title": "Gazebo Digital Twin",
+  "description": "Overview",
+  "source": "@site/docs/chapters/gazebo-digital-twin.md",
+  "sourceDirName": "chapters",
+  "slug": "/chapters/gazebo-digital-twin",
+  "permalink": "/docs/chapters/gazebo-digital-twin",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapters/gazebo-digital-twin.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_label": "Gazebo Digital Twin",
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ROS2 Nervous System",
+    "permalink": "/docs/chapters/ros2-nervous-system"
+  },
+  "next": {
+    "title": "NVIDIA Isaac Brain",
+    "permalink": "/docs/chapters/nvidia-isaac-brain"
+  }
+}

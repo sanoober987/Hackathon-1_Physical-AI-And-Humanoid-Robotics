@@ -1,0 +1,28 @@
+{
+  "id": "chapters/vision-language-action",
+  "title": "Vision Language Action",
+  "description": "Overview",
+  "source": "@site/docs/chapters/vision-language-action.md",
+  "sourceDirName": "chapters",
+  "slug": "/chapters/vision-language-action",
+  "permalink": "/docs/chapters/vision-language-action",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapters/vision-language-action.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_label": "Vision Language Action",
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "NVIDIA Isaac Brain",
+    "permalink": "/docs/chapters/nvidia-isaac-brain"
+  },
+  "next": {
+    "title": "Humanoid Robotics",
+    "permalink": "/docs/chapters/humanoid-robotics"
+  }
+}

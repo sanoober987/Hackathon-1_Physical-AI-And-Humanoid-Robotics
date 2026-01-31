@@ -1,0 +1,28 @@
+{
+  "id": "chapters/ros2-nervous-system",
+  "title": "ROS2 Nervous System",
+  "description": "Overview",
+  "source": "@site/docs/chapters/ros2-nervous-system.md",
+  "sourceDirName": "chapters",
+  "slug": "/chapters/ros2-nervous-system",
+  "permalink": "/docs/chapters/ros2-nervous-system",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapters/ros2-nervous-system.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_label": "ROS2 Nervous System",
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introduction to Physical AI",
+    "permalink": "/docs/chapters/introduction-to-physical-ai"
+  },
+  "next": {
+    "title": "Gazebo Digital Twin",
+    "permalink": "/docs/chapters/gazebo-digital-twin"
+  }
+}

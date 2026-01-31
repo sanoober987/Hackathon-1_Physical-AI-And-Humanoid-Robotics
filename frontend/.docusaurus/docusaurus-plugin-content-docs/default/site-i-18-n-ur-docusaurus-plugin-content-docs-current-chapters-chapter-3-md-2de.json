@@ -1,0 +1,18 @@
+{
+  "id": "chapters/chapter3",
+  "title": "Chapter 3: Control Systems for Humanoid Robots",
+  "description": "Introduction",
+  "source": "@site/i18n/ur/docusaurus-plugin-content-docs/current/chapters/chapter3.md",
+  "sourceDirName": "chapters",
+  "slug": "/chapters/chapter3",
+  "permalink": "/ur/docs/chapters/chapter3",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapters/chapter3.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  }
+}

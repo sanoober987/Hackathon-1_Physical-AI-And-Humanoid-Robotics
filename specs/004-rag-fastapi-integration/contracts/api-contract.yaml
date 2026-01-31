@@ -1,0 +1,394 @@
+# API Contracts: FastAPI RAG Agent Integration
+
+**Feature**: RAG System – Backend and Frontend Integration
+**Date**: 2026-01-24
+**Status**: Draft
+
+## Overview
+This document defines the API contracts for the RAG system, specifying endpoints, request/response schemas, and error handling patterns.
+
+## Base URL
+```
+http://localhost:8000 (development)
+https://api.yourdomain.com (production)
+```
+
+## Authentication
+None required (public API for documentation access)
+
+## Endpoints
+
+### 1. Query Endpoint
+**POST** `/query`
+
+Process a user query against the RAG system and return a grounded response.
+
+#### Request
+- **Content-Type**: `application/json`
+- **Body**: QueryRequest object
+
+##### Example Request
+```json
+{
+  "query": "What are the key principles of the system architecture?",
+  "selected_text": "The architecture follows modular design patterns...",
+  "session_id": "sess-12345-abcde"
+}
+```
+
+#### Response
+- **Success**: `200 OK` - QueryResponse object
+- **Validation Error**: `400 Bad Request` - ErrorResponse object
+- **Processing Error**: `500 Internal Server Error` - ErrorResponse object
+- **Timeout**: `408 Request Timeout` - ErrorResponse object
+
+##### Success Response (200)
+```json
+{
+  "answer": "The key principles of the system architecture include modular design patterns that promote loose coupling between components, secure communication protocols, and scalable infrastructure that can handle increasing loads...",
+  "sources": [
+    {
+      "title": "System Architecture Overview",
+      "url": "/docs/architecture/principles",
+      "excerpt": "The architecture follows modular design patterns that promote loose coupling between components...",
+      "confidence": 0.92,
+      "page_number": 24
+    },
+    {
+      "title": "Security Guidelines",
+      "url": "/docs/security/design",
+      "excerpt": "Secure communication protocols are implemented using industry-standard encryption...",
+      "confidence": 0.87,
+      "page_number": 42
+    }
+  ],
+  "confidence": 0.89,
+  "processing_time_ms": 1420,
+  "timestamp": "2026-01-24T10:30:00.123Z"
+}
+```
+
+##### Error Response (400, 408, 500)
+```json
+{
+  "error": "Invalid query format: query must be between 1 and 1000 characters",
+  "error_code": "INVALID_INPUT",
+  "details": {
+    "field": "query",
+    "value": "",
+    "constraints": {
+      "min_length": 1,
+      "max_length": 1000
+    }
+  }
+}
+```
+
+### 2. Health Check Endpoint
+**GET** `/health`
+
+Check the health status of the API service.
+
+#### Request
+- **No body required**
+
+#### Response
+- **Success**: `200 OK` - Health status
+- **Service Unavailable**: `503 Service Unavailable` - Health status with error details
+
+##### Success Response (200)
+```json
+{
+  "status": "healthy",
+  "timestamp": "2026-01-24T10:30:00.123Z",
+  "version": "1.0.0",
+  "dependencies": {
+    "vector_store": "connected",
+    "agent": "ready"
+  }
+}
+```
+
+##### Error Response (503)
+```json
+{
+  "status": "unhealthy",
+  "timestamp": "2026-01-24T10:30:00.123Z",
+  "error": "Vector store connection failed",
+  "dependencies": {
+    "vector_store": "disconnected",
+    "agent": "ready"
+  }
+}
+```
+
+## Common Headers
+
+### Request Headers
+- `Content-Type: application/json` - Required for POST requests
+- `Accept: application/json` - Expected response format
+- `User-Agent: [client-identifier]` - Optional client identification
+
+### Response Headers
+- `Content-Type: application/json` - Response format
+- `Access-Control-Allow-Origin: *` or specific domain - CORS support
+- `X-Processing-Time: [milliseconds]` - Processing duration
+
+## Error Codes
+
+| Code | HTTP Status | Description |
+|------|-------------|-------------|
+| INVALID_INPUT | 400 | Request validation failed |
+| QUERY_TOO_LONG | 400 | Query exceeds maximum length |
+| TEXT_TOO_LONG | 400 | Selected text exceeds maximum length |
+| PROCESSING_ERROR | 500 | Internal error during query processing |
+| TIMEOUT_ERROR | 408 | Request timed out during processing |
+| SERVICE_UNAVAILABLE | 503 | Service dependencies are unavailable |
+
+## Rate Limiting
+- Per IP: 100 requests per minute
+- Burst allowance: 10 requests
+- Response header: `X-RateLimit-Remaining`, `X-RateLimit-Reset`
+
+## CORS Policy
+- Allowed Origins: Configurable (development: `http://localhost:3000`, production: Docusaurus domain)
+- Allowed Methods: `GET`, `POST`, `OPTIONS`
+- Allowed Headers: `Content-Type`, `Authorization`, `X-Requested-With`
+- Credentials: Not allowed
+
+## OpenAPI Specification
+
+```yaml
+openapi: 3.0.3
+info:
+  title: RAG System API
+  description: API for interacting with the RAG system embedded in the documentation
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Development server
+  - url: https://api.yourdomain.com
+    description: Production server
+paths:
+  /query:
+    post:
+      summary: Process a user query
+      description: Submit a query to the RAG system and receive a grounded response with sources
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+            example:
+              query: "What are the key principles of the system architecture?"
+              selected_text: "The architecture follows modular design patterns..."
+              session_id: "sess-12345-abcde"
+      responses:
+        '200':
+          description: Successful query response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResponse'
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '408':
+          description: Request timeout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /health:
+    get:
+      summary: Health check
+      description: Check the health status of the API service
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+        '503':
+          description: Service is unhealthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthErrorResponse'
+components:
+  schemas:
+    QueryRequest:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: The user's query
+          minLength: 1
+          maxLength: 1000
+          example: "What are the key principles of the system architecture?"
+        selected_text:
+          type: string
+          description: Optional context from user selection
+          maxLength: 5000
+          example: "The architecture follows modular design patterns..."
+        session_id:
+          type: string
+          description: Session identifier for future use
+          example: "sess-12345-abcde"
+    QueryResponse:
+      type: object
+      required:
+        - answer
+        - sources
+        - confidence
+        - processing_time_ms
+        - timestamp
+      properties:
+        answer:
+          type: string
+          description: The generated answer
+          example: "The key principles of the system architecture include modular design patterns..."
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/SourceMetadata'
+        confidence:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Overall confidence score
+          example: 0.89
+        processing_time_ms:
+          type: integer
+          description: Processing time in milliseconds
+          example: 1420
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp of response generation
+          example: "2026-01-24T10:30:00.123Z"
+    SourceMetadata:
+      type: object
+      required:
+        - title
+        - url
+        - excerpt
+        - confidence
+      properties:
+        title:
+          type: string
+          description: Title of the source document
+          example: "System Architecture Overview"
+        url:
+          type: string
+          description: URL to the source document
+          example: "/docs/architecture/principles"
+        excerpt:
+          type: string
+          description: Relevant excerpt from the source
+          example: "The architecture follows modular design patterns that promote loose coupling..."
+        confidence:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Confidence score for this source
+          example: 0.92
+        page_number:
+          type: integer
+          description: Page number in the source document
+          example: 24
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - error_code
+      properties:
+        error:
+          type: string
+          description: Human-readable error message
+          example: "Invalid query format: query must be between 1 and 1000 characters"
+        error_code:
+          type: string
+          description: Machine-readable error code
+          enum: [INVALID_INPUT, QUERY_TOO_LONG, TEXT_TOO_LONG, PROCESSING_ERROR, TIMEOUT_ERROR]
+          example: "INVALID_INPUT"
+        details:
+          type: object
+          description: Additional error details
+          example:
+            field: "query"
+            value: ""
+            constraints: {"min_length": 1, "max_length": 1000}
+    HealthResponse:
+      type: object
+      required:
+        - status
+        - timestamp
+      properties:
+        status:
+          type: string
+          enum: [healthy, unhealthy]
+          example: "healthy"
+        timestamp:
+          type: string
+          format: date-time
+          example: "2026-01-24T10:30:00.123Z"
+        version:
+          type: string
+          example: "1.0.0"
+        dependencies:
+          type: object
+          properties:
+            vector_store:
+              type: string
+              enum: [connected, disconnected]
+              example: "connected"
+            agent:
+              type: string
+              enum: [ready, not_ready]
+              example: "ready"
+    HealthErrorResponse:
+      type: object
+      required:
+        - status
+        - timestamp
+        - error
+      properties:
+        status:
+          type: string
+          enum: [healthy, unhealthy]
+          example: "unhealthy"
+        timestamp:
+          type: string
+          format: date-time
+          example: "2026-01-24T10:30:00.123Z"
+        error:
+          type: string
+          example: "Vector store connection failed"
+        dependencies:
+          type: object
+          properties:
+            vector_store:
+              type: string
+              enum: [connected, disconnected]
+              example: "disconnected"
+            agent:
+              type: string
+              enum: [ready, not_ready]
+              example: "ready"
+```

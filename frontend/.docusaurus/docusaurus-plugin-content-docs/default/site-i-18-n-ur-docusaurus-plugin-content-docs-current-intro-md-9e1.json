@@ -1,0 +1,23 @@
+{
+  "id": "intro",
+  "title": "Introduction to Physical AI & Humanoid Robotics",
+  "description": "میں خوش آمدید کا/کی comprehensive textbook on فزکل AI اور ہیومنوائڈ روبوٹics. یہ کتاب احاطہ کرتا ہے کا/کی fundamental تصورات, اعلیٰ درجے کی topics, اور practical implementations in کا/کی field of مصنوعی ذہانت applied to physical سسٹمز اور ہیومنوائڈ روبوٹس.",
+  "source": "@site/i18n/ur/docusaurus-plugin-content-docs/current/intro.md",
+  "sourceDirName": ".",
+  "slug": "/intro",
+  "permalink": "/ur/docs/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "تعارف to فزکل AI",
+    "permalink": "/ur/docs/chapters/introduction-to-physical-ai"
+  }
+}

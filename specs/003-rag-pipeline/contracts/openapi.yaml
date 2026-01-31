@@ -1,0 +1,401 @@
+openapi: 3.0.3
+info:
+  title: RAG Ingestion and Retrieval API
+  description: API for managing the RAG ingestion pipeline and retrieval validation
+  version: 0.1.0
+servers:
+  - url: http://localhost:8000
+    description: Local development server
+
+paths:
+  /process-document:
+    post:
+      summary: Process a single document from the website
+      description: Extracts content from a web page, chunks it, and prepares for embedding
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessDocumentRequest'
+      responses:
+        '200':
+          description: Document processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessDocumentResponse'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /generate-embeddings:
+    post:
+      summary: Generate embeddings for document chunks
+      description: Creates vector representations using Cohere API
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateEmbeddingsRequest'
+      responses:
+        '200':
+          description: Embeddings generated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateEmbeddingsResponse'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /store-vectors:
+    post:
+      summary: Store embeddings in Qdrant vector database
+      description: Stores vector representations with metadata in Qdrant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreVectorsRequest'
+      responses:
+        '200':
+          description: Vectors stored successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreVectorsResponse'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /retrieval-validate:
+    post:
+      summary: Validate retrieval functionality
+      description: Tests that stored embeddings can be retrieved effectively
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetrievalValidateRequest'
+      responses:
+        '200':
+          description: Retrieval validation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrievalValidateResponse'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /pipeline-status:
+    get:
+      summary: Get current pipeline status
+      description: Returns information about the current pipeline execution
+      responses:
+        '200':
+          description: Current pipeline status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineStatusResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    ProcessDocumentRequest:
+      type: object
+      properties:
+        url:
+          type: string
+          description: URL of the document to process
+          example: "https://example.com/docs/introduction"
+        extract_metadata:
+          type: boolean
+          description: Whether to extract additional metadata
+          default: true
+      required:
+        - url
+
+    ProcessDocumentResponse:
+      type: object
+      properties:
+        document_id:
+          type: string
+          description: Unique identifier for the processed document
+        chunks_created:
+          type: integer
+          description: Number of text chunks created from the document
+        status:
+          type: string
+          description: Processing status
+          enum: [success, error, skipped]
+        processing_time_ms:
+          type: integer
+          description: Time taken to process in milliseconds
+
+    GenerateEmbeddingsRequest:
+      type: object
+      properties:
+        chunk_ids:
+          type: array
+          items:
+            type: string
+          description: List of chunk IDs to generate embeddings for
+        model:
+          type: string
+          description: Cohere model to use for embedding generation
+          default: "embed-english-v3.0"
+        batch_size:
+          type: integer
+          description: Number of embeddings to process in each batch
+          default: 32
+      required:
+        - chunk_ids
+
+    GenerateEmbeddingsResponse:
+      type: object
+      properties:
+        embeddings_created:
+          type: integer
+          description: Number of embeddings successfully created
+        model_used:
+          type: string
+          description: Model that was used for embedding generation
+        batch_results:
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchResult'
+        status:
+          type: string
+          description: Overall processing status
+          enum: [success, partial, error]
+
+    StoreVectorsRequest:
+      type: object
+      properties:
+        vectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/VectorData'
+        collection_name:
+          type: string
+          description: Name of the Qdrant collection to store vectors in
+          default: "documents"
+        batch_size:
+          type: integer
+          description: Number of vectors to store in each batch
+          default: 50
+      required:
+        - vectors
+
+    StoreVectorsResponse:
+      type: object
+      properties:
+        vectors_stored:
+          type: integer
+          description: Number of vectors successfully stored
+        collection:
+          type: string
+          description: Name of the collection where vectors were stored
+        status:
+          type: string
+          description: Storage operation status
+          enum: [success, partial, error]
+
+    RetrievalValidateRequest:
+      type: object
+      properties:
+        query_text:
+          type: string
+          description: Text to use for retrieval testing
+          example: "Tell me about the introduction section"
+        top_k:
+          type: integer
+          description: Number of results to retrieve
+          default: 5
+        threshold:
+          type: number
+          description: Similarity threshold for filtering results
+          default: 0.5
+      required:
+        - query_text
+
+    RetrievalValidateResponse:
+      type: object
+      properties:
+        query_text:
+          type: string
+          description: Original query text
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/RetrievalResult'
+        total_candidates:
+          type: integer
+          description: Total number of candidates considered
+        retrieval_time_ms:
+          type: integer
+          description: Time taken for retrieval in milliseconds
+        status:
+          type: string
+          description: Retrieval status
+          enum: [success, error]
+
+    PipelineStatusResponse:
+      type: object
+      properties:
+        pipeline_id:
+          type: string
+          description: Current pipeline execution ID
+        status:
+          type: string
+          description: Current pipeline status
+          enum: [idle, crawling, processing, embedding, storing, completed, failed]
+        documents_processed:
+          type: integer
+          description: Number of documents processed so far
+        embeddings_generated:
+          type: integer
+          description: Number of embeddings generated
+        vectors_stored:
+          type: integer
+          description: Number of vectors stored in database
+        start_time:
+          type: string
+          format: date-time
+          description: When the pipeline started
+        current_operation:
+          type: string
+          description: Current operation being performed
+        error_message:
+          type: string
+          description: Error message if pipeline failed
+
+    VectorData:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the vector
+        vector:
+          type: array
+          items:
+            type: number
+          description: The embedding vector values
+        metadata:
+          $ref: '#/components/schemas/VectorMetadata'
+
+    VectorMetadata:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Original URL of the source document
+        title:
+          type: string
+          description: Title of the source document
+          example: "Introduction to the Project"
+        section:
+          type: string
+          description: Section of the documentation
+          example: "Getting Started"
+        chunk_index:
+          type: integer
+          description: Index of this chunk in the original document
+        source_hash:
+          type: string
+          description: Hash of the original content for duplicate detection
+
+    RetrievalResult:
+      type: object
+      properties:
+        chunk_id:
+          type: string
+          description: ID of the retrieved chunk
+        score:
+          type: number
+          description: Similarity score of the result
+        content:
+          type: string
+          description: Content of the retrieved chunk
+        metadata:
+          $ref: '#/components/schemas/VectorMetadata'
+
+    BatchResult:
+      type: object
+      properties:
+        batch_index:
+          type: integer
+          description: Index of this batch
+        items_processed:
+          type: integer
+          description: Number of items processed in this batch
+        success_count:
+          type: integer
+          description: Number of successful operations in this batch
+        error_count:
+          type: integer
+          description: Number of failed operations in this batch
+        processing_time_ms:
+          type: integer
+          description: Time taken to process this batch
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        details:
+          type: object
+          description: Additional error details
+        timestamp:
+          type: string
+          format: date-time
+          description: When the error occurred

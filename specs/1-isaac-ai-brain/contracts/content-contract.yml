@@ -1,0 +1,65 @@
+# Content Contract: NVIDIA Isaac Module
+
+## Chapter Structure Requirements
+
+### Required Fields
+- title: string (chapter title)
+- description: string (brief description of chapter content)
+- tags: array of strings (relevant keywords for search)
+- sidebar_position: integer (order in sidebar navigation)
+
+### Optional Fields
+- hide_table_of_contents: boolean (whether to hide TOC)
+- keywords: array of strings (SEO keywords)
+- image: string (path to featured image)
+- draft: boolean (whether chapter is in draft state)
+
+## Content Section Requirements
+
+### Overview Section
+- Must include learning objectives
+- Should provide context for the chapter topic
+- Should connect to previous knowledge
+
+### Concepts Section
+- Must define key terminology
+- Should explain underlying principles
+- Should include relevant diagrams or illustrations
+
+### Examples Section
+- Must include executable code snippets
+- Should demonstrate practical applications
+- Should include expected output/results
+
+### Hands-on Section
+- Must include step-by-step instructions
+- Should have clear prerequisites
+- Should include verification steps
+
+### Summary Section
+- Must recap key concepts
+- Should provide next steps
+- Should include additional resources
+
+## Validation Rules
+
+### Frontmatter Validation
+- All required fields must be present
+- Title should be 50 characters or less
+- Description should be 160 characters or less
+- Sidebar position must be unique within module
+
+### Content Validation
+- All code snippets must be properly formatted
+- Links to external resources must be valid
+- Images must exist and be accessible
+- Internal navigation links must resolve correctly
+
+## Acceptance Criteria
+
+### For Each Chapter
+- Renders correctly in Docusaurus environment
+- Contains all required sections
+- Includes at least one practical example
+- Has proper navigation integration
+- Validates without errors in build process

@@ -1,0 +1,143 @@
+openapi: 3.0.0
+info:
+  title: RAG Retrieval API
+  description: API for retrieving relevant content chunks from vector database
+  version: 1.0.0
+paths:
+  /retrieve:
+    post:
+      summary: Retrieve relevant content chunks for a query
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetrieveRequest'
+      responses:
+        '200':
+          description: Successful retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrieveResponse'
+        '400':
+          description: Invalid query
+        '404':
+          description: Collection not found
+        '500':
+          description: Internal server error
+  /validate:
+    post:
+      summary: Validate the retrieval system with test queries
+      responses:
+        '200':
+          description: Validation results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationResponse'
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    RetrieveRequest:
+      type: object
+      properties:
+        query:
+          type: string
+          description: Natural language query
+          example: "What are the key principles of AI safety?"
+        top_k:
+          type: integer
+          description: Number of results to return
+          default: 5
+          minimum: 1
+          maximum: 100
+        threshold:
+          type: number
+          description: Minimum similarity threshold
+          default: 0.0
+          minimum: 0.0
+          maximum: 1.0
+      required:
+        - query
+    RetrieveResponse:
+      type: object
+      properties:
+        query_embedding:
+          type: array
+          items:
+            type: number
+          description: Embedding vector of the query
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchResult'
+        execution_time:
+          type: number
+          description: Time taken in seconds
+        retrieval_stats:
+          $ref: '#/components/schemas/RetrievalStats'
+    SearchResult:
+      type: object
+      properties:
+        content:
+          type: string
+          description: Retrieved content chunk
+        score:
+          type: number
+          description: Similarity score
+        metadata:
+          type: object
+          properties:
+            url:
+              type: string
+              description: Source URL
+            title:
+              type: string
+              description: Document title
+            section:
+              type: string
+              description: Section name
+            chunk_index:
+              type: integer
+              description: Chunk index
+          required:
+            - url
+            - title
+            - section
+    RetrievalStats:
+      type: object
+      properties:
+        total_candidates:
+          type: integer
+          description: Total candidates considered
+        search_threshold:
+          type: number
+          description: Threshold used for filtering
+    ValidationResponse:
+      type: object
+      properties:
+        validation_results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationResult'
+    ValidationResult:
+      type: object
+      properties:
+        test_name:
+          type: string
+          description: Name of the test
+        passed:
+          type: boolean
+          description: Whether test passed
+        details:
+          type: string
+          description: Additional details
+        accuracy_score:
+          type: number
+          description: Accuracy metric if applicable
+        timestamp:
+          type: string
+          format: date-time
+          description: When test was run
