@@ -1,5 +1,4 @@
 {
-  "unversionedId": "intro",
   "id": "intro",
   "title": "Introduction to Physical AI & Humanoid Robotics",
   "description": "Welcome to the comprehensive textbook on Physical AI and Humanoid Robotics. This book covers the fundamental concepts, advanced topics, and practical implementations in the field of artificial intelligence applied to physical systems and humanoid robots.",
@@ -8,7 +7,8 @@
   "slug": "/intro",
   "permalink": "/docs/intro",
   "draft": false,
-  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/intro.md",
+  "unlisted": false,
+  "editUrl": "https://github.com/physicalai-book/physicalai-book/docs/intro.md",
   "tags": [],
   "version": "current",
   "sidebarPosition": 1,

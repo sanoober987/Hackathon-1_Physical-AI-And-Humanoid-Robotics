@@ -12,7 +12,7 @@ export default {
   "trailingSlash": false,
   "organizationName": "physicalai-book",
   "projectName": "physicalai-book",
-  "onBrokenLinks": "warn",
+  "onBrokenLinks": "throw",
   "i18n": {
     "defaultLocale": "en",
     "locales": [
@@ -21,20 +21,37 @@ export default {
     "path": "i18n",
     "localeConfigs": {}
   },
+  "markdown": {
+    "mermaid": true,
+    "format": "mdx",
+    "emoji": true,
+    "mdx1Compat": {
+      "comments": true,
+      "admonitions": true,
+      "headingIds": true
+    },
+    "anchors": {
+      "maintainCase": false
+    },
+    "hooks": {
+      "onBrokenMarkdownLinks": "warn",
+      "onBrokenMarkdownImages": "throw"
+    }
+  },
   "presets": [
     [
       "classic",
       {
         "docs": {
           "sidebarPath": "D:\\Hackathon-1\\PhysicalAI_Book\\frontend\\sidebars.js",
-          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          "editUrl": "https://github.com/physicalai-book/physicalai-book",
           "routeBasePath": "/docs",
           "path": "docs",
           "includeCurrentVersion": true
         },
         "blog": {
           "showReadingTime": true,
-          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/"
+          "editUrl": "https://github.com/physicalai-book/physicalai-book"
         },
         "theme": {
           "customCss": "D:\\Hackathon-1\\PhysicalAI_Book\\frontend\\src\\css\\custom.css"
@@ -340,6 +357,11 @@ export default {
         "autoCollapseCategories": false
       }
     },
+    "blog": {
+      "sidebar": {
+        "groupByYear": true
+      }
+    },
     "metadata": [],
     "tableOfContents": {
       "minHeadingLevel": 2,
@@ -347,7 +369,28 @@ export default {
     }
   },
   "baseUrlIssueBanner": true,
-  "onBrokenMarkdownLinks": "warn",
+  "future": {
+    "v4": {
+      "removeLegacyPostBuildHeadAttribute": false,
+      "useCssCascadeLayers": false
+    },
+    "experimental_faster": {
+      "swcJsLoader": false,
+      "swcJsMinimizer": false,
+      "swcHtmlMinimizer": false,
+      "lightningCssMinimizer": false,
+      "mdxCrossCompilerCache": false,
+      "rspackBundler": false,
+      "rspackPersistentCache": false,
+      "ssgWorkerThreads": false
+    },
+    "experimental_storage": {
+      "type": "localStorage",
+      "namespace": false
+    },
+    "experimental_router": "browser"
+  },
+  "onBrokenAnchors": "warn",
   "onDuplicateRoutes": "warn",
   "staticDirectories": [
     "static"
@@ -360,8 +403,5 @@ export default {
   "stylesheets": [],
   "clientModules": [],
   "titleDelimiter": "|",
-  "noIndex": false,
-  "markdown": {
-    "mermaid": false
-  }
+  "noIndex": false
 };

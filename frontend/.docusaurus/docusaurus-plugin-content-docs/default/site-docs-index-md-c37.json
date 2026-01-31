@@ -1,5 +1,4 @@
 {
-  "unversionedId": "index",
   "id": "index",
   "title": "Physical AI & Humanoid Robotics",
   "description": "Welcome to the Physical AI Book powered by AI and RAG Chatbot.",
@@ -8,7 +7,8 @@
   "slug": "/",
   "permalink": "/docs/",
   "draft": false,
-  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/index.md",
+  "unlisted": false,
+  "editUrl": "https://github.com/physicalai-book/physicalai-book/docs/index.md",
   "tags": [],
   "version": "current",
   "frontMatter": {}

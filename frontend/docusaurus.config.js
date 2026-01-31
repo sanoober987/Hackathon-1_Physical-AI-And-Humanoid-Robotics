@@ -1,6 +1,4 @@
 // @ts-check
-// Docusaurus configuration for Physical AI & Humanoid Robotics
-
 const lightCodeTheme = require('prism-react-renderer').themes.github;
 const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
@@ -10,55 +8,52 @@ const config = {
   tagline: 'A Comprehensive Textbook on Physical AI and Humanoid Robotics',
   favicon: 'img/favicon.ico',
 
-  url: 'https://hackathon-1-physical-ai-humanoid-robotics-textbook-a18m.vercel.app', 
+  url: 'https://hackathon-1-physical-ai-humanoid-robotics-textbook-a18m.vercel.app',
   baseUrl: '/',
   trailingSlash: false,
 
   organizationName: 'physicalai-book',
   projectName: 'physicalai-book',
 
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
 
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/physicalai-book/physicalai-book',
           routeBasePath: '/docs',
           path: 'docs',
           includeCurrentVersion: true,
         },
         blog: {
           showReadingTime: true,
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/physicalai-book/physicalai-book',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      }),
+      },
     ],
   ],
 
-  themeConfig: /** @type {import('@docusaurus/preset-classic').ThemeConfig} */ ({
+  themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'Physical AI & Humanoid Robotics',
-      logo: {
-        alt: 'Physical AI Logo',
-        src: 'img/logo.svg',
-        width: 32,
-        height: 32,
-      },
+      logo: { alt: 'Physical AI Logo', src: 'img/logo.svg', width: 32, height: 32 },
       items: [
         { to: '/', label: 'Home', position: 'left' },
         { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Textbook' },
@@ -71,22 +66,20 @@ const config = {
       links: [
         { title: 'Docs', items: [{ label: 'Tutorial', to: '/docs/intro' }] },
         { title: 'Resources', items: [
-          { label: 'GitHub', href: 'https://github.com/physicalai-book/physicalai-book' },
-          { label: 'Documentation', to: '/docs/intro' },
-        ]},
+            { label: 'GitHub', href: 'https://github.com/physicalai-book/physicalai-book' },
+            { label: 'Documentation', to: '/docs/intro' }
+          ]
+        },
         { title: 'Community', items: [
-          { label: 'Physical AI Community', href: 'https://example.com/community' },
-          { label: 'Robotics Forum', href: 'https://example.com/forum' },
-        ]},
+            { label: 'Physical AI Community', href: 'https://example.com/community' },
+            { label: 'Robotics Forum', href: 'https://example.com/forum' }
+          ]
+        },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook, Inc. Built with Docusaurus.`,
     },
-    prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
-      additionalLanguages: ['python', 'bash', 'json', 'yaml', 'docker'],
-    },
-  }),
+    prism: { theme: lightCodeTheme, darkTheme: darkCodeTheme, additionalLanguages: ['python','bash','json','yaml','docker'] },
+  },
 };
 
 module.exports = config;

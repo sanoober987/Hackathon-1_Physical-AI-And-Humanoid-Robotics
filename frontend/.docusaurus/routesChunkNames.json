@@ -1,120 +1,126 @@
 {
-  "/__docusaurus/debug-a0b": {
+  "/__docusaurus/debug-5ff": {
     "__comp": "__comp---theme-debug-config-23-a-2ff",
     "__context": {
-      "plugin": "plugin---docusaurus-debug-75-f-913"
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
     }
   },
-  "/__docusaurus/debug/config-aa6": {
+  "/__docusaurus/debug/config-5ba": {
     "__comp": "__comp---theme-debug-config-23-a-2ff",
     "__context": {
-      "plugin": "plugin---docusaurus-debug-75-f-913"
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
     }
   },
-  "/__docusaurus/debug/content-134": {
+  "/__docusaurus/debug/content-a2b": {
     "__comp": "__comp---theme-debug-contentba-8-ce7",
     "__context": {
-      "plugin": "plugin---docusaurus-debug-75-f-913"
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
     },
-    "allContent": "allContent---docusaurus-debug-content-246-9aa"
+    "__props": "__props---docusaurus-debug-content-3-c-0-be2"
   },
-  "/__docusaurus/debug/globalData-e2b": {
+  "/__docusaurus/debug/globalData-c3c": {
     "__comp": "__comp---theme-debug-global-dataede-0fa",
     "__context": {
-      "plugin": "plugin---docusaurus-debug-75-f-913"
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
     }
   },
-  "/__docusaurus/debug/metadata-6b2": {
+  "/__docusaurus/debug/metadata-156": {
     "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
     "__context": {
-      "plugin": "plugin---docusaurus-debug-75-f-913"
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
     }
   },
-  "/__docusaurus/debug/registry-061": {
+  "/__docusaurus/debug/registry-88c": {
     "__comp": "__comp---theme-debug-registry-679-501",
     "__context": {
-      "plugin": "plugin---docusaurus-debug-75-f-913"
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
     }
   },
-  "/__docusaurus/debug/routes-97c": {
+  "/__docusaurus/debug/routes-000": {
     "__comp": "__comp---theme-debug-routes-946-699",
     "__context": {
-      "plugin": "plugin---docusaurus-debug-75-f-913"
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
     }
   },
-  "/assistant-462": {
+  "/assistant-efe": {
     "__comp": "__comp---site-src-pages-assistant-jsxe-42-04c",
     "__context": {
-      "plugin": "plugin---assistant-9-eb-973"
+      "plugin": "plugin---assistanta-74-d78"
     },
     "config": "config---assistant-5-e-9-186"
   },
-  "/chat-289": {
+  "/chat-aac": {
     "__comp": "__comp---site-src-pages-chat-jsxce-5-ee2",
     "__context": {
-      "plugin": "plugin---assistant-9-eb-973"
+      "plugin": "plugin---assistanta-74-d78"
     },
     "config": "config---assistant-5-e-9-186"
   },
-  "/docs-3b0": {
-    "__comp": "__comp---theme-doc-page-1-be-9be",
+  "/docs-056": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
-      "plugin": "plugin---docsd-1-a-69e"
-    },
-    "versionMetadata": "versionMetadata---docs-935-398"
+      "plugin": "plugin---docsaba-d7c"
+    }
   },
-  "/docs-51a": {
+  "/docs-3c0": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---docs-005-788"
+  },
+  "/docs-471": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/docs-011": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docsc-37-4a7"
   },
-  "/docs/chapters/capstone-project-f31": {
+  "/docs/chapters/capstone-project-423": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-chapters-capstone-project-88-b-40f"
   },
-  "/docs/chapters/chapter1-b3f": {
+  "/docs/chapters/chapter1-1f4": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-chapters-chapter-1-cc-0-ecc"
   },
-  "/docs/chapters/chapter2-78d": {
+  "/docs/chapters/chapter2-87b": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-chapters-chapter-2-e-0-d-2a2"
   },
-  "/docs/chapters/chapter3-672": {
+  "/docs/chapters/chapter3-f4a": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-chapters-chapter-3722-ec7"
   },
-  "/docs/chapters/gazebo-digital-twin-bca": {
+  "/docs/chapters/gazebo-digital-twin-e70": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-chapters-gazebo-digital-twin-421-516"
   },
-  "/docs/chapters/humanoid-robotics-565": {
+  "/docs/chapters/humanoid-robotics-1ca": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-chapters-humanoid-roboticsb-7-a-750"
   },
-  "/docs/chapters/introduction-to-physical-ai-8de": {
+  "/docs/chapters/introduction-to-physical-ai-42b": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-chapters-introduction-to-physical-ai-704-474"
   },
-  "/docs/chapters/nvidia-isaac-brain-f18": {
+  "/docs/chapters/nvidia-isaac-brain-9d0": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-chapters-nvidia-isaac-brainec-8-555"
   },
-  "/docs/chapters/ros2-nervous-system-466": {
+  "/docs/chapters/ros2-nervous-system-6ab": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-chapters-ros-2-nervous-system-200-7d0"
   },
-  "/docs/chapters/vision-language-action-462": {
+  "/docs/chapters/vision-language-action-af9": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-chapters-vision-language-action-1-f-3-d7a"
   },
-  "/docs/intro-aed": {
+  "/docs/intro-61d": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---docs-intro-0-e-3-be1"
   },
-  "/-d98": {
+  "/-070": {
     "__comp": "__comp---site-src-pages-index-jsx-9-dd-cb1",
     "__context": {
-      "plugin": "plugin---assistant-9-eb-973"
+      "plugin": "plugin---assistanta-74-d78"
     },
     "config": "config---assistant-5-e-9-186"
   }

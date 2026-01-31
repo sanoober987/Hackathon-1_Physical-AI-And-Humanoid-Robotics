@@ -11,7 +11,10 @@
       "direction": "ltr",
       "htmlLang": "en",
       "calendar": "gregory",
-      "path": "en"
+      "path": "en",
+      "translate": true,
+      "url": "https://hackathon-1-physical-ai-humanoid-robotics-textbook-a18m.vercel.app",
+      "baseUrl": "/"
     }
   }
 }

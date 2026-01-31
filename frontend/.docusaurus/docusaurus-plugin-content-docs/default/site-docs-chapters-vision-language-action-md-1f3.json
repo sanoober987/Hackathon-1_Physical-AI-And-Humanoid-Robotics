@@ -1,5 +1,4 @@
 {
-  "unversionedId": "chapters/vision-language-action",
   "id": "chapters/vision-language-action",
   "title": "Vision Language Action",
   "description": "Overview",
@@ -8,7 +7,8 @@
   "slug": "/chapters/vision-language-action",
   "permalink": "/docs/chapters/vision-language-action",
   "draft": false,
-  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapters/vision-language-action.md",
+  "unlisted": false,
+  "editUrl": "https://github.com/physicalai-book/physicalai-book/docs/chapters/vision-language-action.md",
   "tags": [],
   "version": "current",
   "sidebarPosition": 5,
