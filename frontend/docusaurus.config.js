@@ -10,8 +10,9 @@ const config = {
   tagline: 'A Comprehensive Textbook on Physical AI and Humanoid Robotics',
   favicon: 'img/favicon.ico',
 
-  url: 'https://physicalai-book.com', // Production URL
+  url: 'https://hackathon-1-physical-ai-humanoid-robotics-textbook-a18m.vercel.app', // Production URL
   baseUrl: '/',
+  trailingSlash: false,
 
   organizationName: 'physicalai-book', // GitHub org/user
   projectName: 'physicalai-book', // Repo name
@@ -62,13 +63,13 @@ const config = {
   ],
 
   plugins: [
-    [
-      require.resolve('@docusaurus/plugin-client-redirects'),
-      {
-        fromExtensions: ['html'],
-        redirects: [],
-      },
-    ],
+    // [
+    //   require.resolve('@docusaurus/plugin-client-redirects'),
+    //   {
+    //     fromExtensions: ['html'],
+    //     redirects: [],
+    //   },
+    // ],
   ],
 
   themeConfig: /** @type {import('@docusaurus/preset-classic').ThemeConfig} */ ({
