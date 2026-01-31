@@ -3,15 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "start": "npx docusaurus start",
+    "build": "npx docusaurus build",
+    "serve": "npx docusaurus serve",
+    "clear": "npx docusaurus clear",
+    "deploy": "npx docusaurus deploy",
+    "swizzle": "npx docusaurus swizzle",
+    "write-translations": "npx docusaurus write-translations",
+    "write-heading-ids": "npx docusaurus write-heading-ids"
   },
   "dependencies": {
     "@docusaurus/core": "^3.1.0",
@@ -42,6 +41,6 @@
     ]
   },
   "engines": {
-    "node": "24.x"
+    "node": "20.x"
   }
 }
